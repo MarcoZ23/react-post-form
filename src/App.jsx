@@ -14,9 +14,13 @@ function App() {
 
   function handleFormData(e) {
 
+    const value =
+      e.target.type === "checkbox" ?
+        e.target.checked : e.target.value
+
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: value
     })
   }
 
@@ -59,11 +63,10 @@ function App() {
                 </div>
                 <div className="col">
                   <input
-                    className="form-control"
-                    placeholder="True o False"
-                    type="text"
+                    className="form-check"
+                    type="checkbox"
                     name="public"
-                    value={formData.public}
+                    checked={formData.public}
                     onChange={handleFormData}
                   />
                 </div>
